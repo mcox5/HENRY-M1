@@ -8,31 +8,31 @@ Determiná que será impreso en la consola, sin ejecutar el código.
 > Investiga cuál es la diferencia entre declarar una variable con `var` y directamente asignarle un valor.
 
 ```javascript
-x = 1;
+x = 1; 
 var a = 5;
 var b = 10;
 var c = function(a, b, c) {
   var x = 10;
-  console.log(x);
-  console.log(a);
+  console.log(x); //10
+  console.log(a); //8
   var f = function(a, b, c) {
     b = a;
-    console.log(b);
-    b = c;
+    console.log(b); //8
+    b = c; // 
     var x = 5;
   }
   f(a,b,c);
-  console.log(b);
+  console.log(b); // SEGUN YO ES 10 (NO ENTIENDO PQ NO PESCA LA LINEA 21) PERO ES 9
 }
 c(8,9,10);
-console.log(b);
-console.log(x);
+console.log(b); //10
+console.log(x); //1
 ```
 
 ```javascript
-console.log(bar);
-console.log(baz);
-foo();
+console.log(bar); //undefinded
+console.log(baz); //error
+foo(); //"Hola!" XX duda: por que no imprime nada??
 function foo() { console.log('Hola!'); }
 var bar = 1;
 baz = 2;
@@ -43,19 +43,19 @@ var instructor = "Tony";
 if(true) {
     var instructor = "Franco";
 }
-console.log(instructor);
+console.log(instructor); //"Franco"
 ```
 
 ```javascript
 var instructor = "Tony";
-console.log(instructor);
+console.log(instructor); //"Tony"
 (function() {
    if(true) {
       var instructor = "Franco";
-      console.log(instructor);
+      console.log(instructor); //Franco
    }
 })();
-console.log(instructor);
+console.log(instructor); //"Tony"
 ```
 
 ```javascript
@@ -63,34 +63,34 @@ var instructor = "Tony";
 let pm = "Franco";
 if (true) {
     var instructor = "The Flash";
-    let pm = "Reverse Flash";
-    console.log(instructor);
-    console.log(pm);
+    let pm = "Reverse Flash"; //el let no sale de su "scope"
+    console.log(instructor); //The Flash
+    console.log(pm); //Reverse Flash
 }
-console.log(instructor);
-console.log(pm);
+console.log(instructor); //The Flash
+console.log(pm); //Franco
 ```
 ### Coerción de Datos
 
 ¿Cuál crees que será el resultado de la ejecución de estas operaciones?:
 
 ```javascript
-6 / "3"
-"2" * "3"
-4 + 5 + "px"
-"$" + 4 + 5
-"4" - 2
-"4px" - 2
-7 / 0
-{}[0]
-parseInt("09")
-5 && 2
-2 && 5
-5 || 0
-0 || 5
-[3]+[3]-[10]
-3>2>1
-[] == ![]
+6 / "3" //2
+"2" * "3" //6
+4 + 5 + "px" //9px en este caso concatena cuando hay un + entre num y string
+"$" + 4 + 5 //$45 Recordar que se lee de izquierda a derecha
+"4" - 2 //2
+"4px" - 2//NoN En este caso el - no es para concatenar, pero el + SI lo es
+7 / 0//Infinity
+{}[0] // Undefined (NO LO ENTENDI)
+parseInt("09") //9
+5 && 2 //2 Se lee de izquierda a derecha
+2 && 5 //5 
+5 || 0 //5
+0 || 5 //5
+[3]+[3]-[10]//[23]
+3>2>1 // false, RECORDAR QUE true es igual a 1 y false es igual a 0, por otro lado en este tipo de operaciones se lee de izq a derecha
+[] == ![] //true
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
@@ -102,8 +102,8 @@ parseInt("09")
 
 ```javascript
 function test() {
-   console.log(a);
-   console.log(foo());
+   console.log(a); //undefined
+   console.log(foo()); //2
 
    var a = 1;
    function foo() {
@@ -115,7 +115,7 @@ test();
 ```
 
 Y el de este código? :
-
+////Este no lo ENTENDI!
 ```javascript
 var snack = 'Meow Mix';
 
