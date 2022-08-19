@@ -71,5 +71,23 @@
 //Este proceso de Hoisting ocurre en la creation Phase
 
 //el "SCOPE" de una variable es el alcance de esa variable, y este alcance va a ser igual a su contexto de ejecución
+//Lo anterior lo podemos ver cuando definimos unas variable dentro de una función, el scope de esa variable sería el contexto de ejecución de esa variable
+// Orden de operadores
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table 
 
+//En el caso de los array, estos guardan en memoria una posición al igualar una variable a ese array hacer referencia a esa posicion en memorioa
+//Esto quiere decir que array hay UNO SOLO EN ESTE CASO!
 
+var miArray=[1,2,3,4,5]
+var miOtroArray=miArray
+
+console.log(miArray===miOtroArray) //true
+var array_nuevo=[1,2,3,4,5]
+console.log(miArray===array_nuevo) //false (ESTO SE DEBE A QUE ESTAN EN OTRA POSICION DE LA MEMORIA)
+
+var a=5
+var b=5
+
+console.log(a===b) //vemos que en este caso es true y no sucede lo mismo que con los array
+var c=8
+console.log(c)
