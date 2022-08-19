@@ -78,16 +78,27 @@
 //En el caso de los array, estos guardan en memoria una posición al igualar una variable a ese array hacer referencia a esa posicion en memorioa
 //Esto quiere decir que array hay UNO SOLO EN ESTE CASO!
 
-var miArray=[1,2,3,4,5]
-var miOtroArray=miArray
+// var miArray=[1,2,3,4,5]
+// var miOtroArray=miArray
 
-console.log(miArray===miOtroArray) //true
-var array_nuevo=[1,2,3,4,5]
-console.log(miArray===array_nuevo) //false (ESTO SE DEBE A QUE ESTAN EN OTRA POSICION DE LA MEMORIA)
+// console.log(miArray===miOtroArray) //true
+// var array_nuevo=[1,2,3,4,5]
+// console.log(miArray===array_nuevo) //false (ESTO SE DEBE A QUE ESTAN EN OTRA POSICION DE LA MEMORIA)
 
-var a=5
-var b=5
+// var a=5
+// var b=5
 
-console.log(a===b) //vemos que en este caso es true y no sucede lo mismo que con los array
-var c=8
-console.log(c)
+// console.log(a===b) //vemos que en este caso es true y no sucede lo mismo que con los array
+// var c=8
+// console.log(c)
+
+
+//El "this":
+//cuando el se utiliza, lo primero es que se pregunta en dónde se está ejecutando
+//como método de un objeto va a cambiar un poquito la historia, en este caso el this refereciaría a ese objeto en donde se está ejecutando
+//Cuando ejecutamos una funcion dentro de una funcion, la funcion que esta dentro no se pregunta donde esta la otra funcion, entonces this, en una funcion que esta dentro
+//de una funcion, que esta dentro de un objeto, se refiere al global
+//para evitar que suceda esto, ocupamos almacenamos this en una variable "that" de manera de poder ocuparla dentro de la función de más adentro,
+//sin que refiera al global, ahora referería al objeto!
+
+

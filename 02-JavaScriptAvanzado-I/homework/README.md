@@ -11,7 +11,7 @@ Determiná que será impreso en la consola, sin ejecutar el código.
 x = 1; 
 var a = 5;
 var b = 10;
-var c = function(a, b, c) {
+var c = function(a, b, c) { //cuando tenemos parámetros dentro de una función, en realidad estamos creando nuevas variables es ese contexto, es decir estamos en un nueva etapa de creation, con las tres variables a,b,c=undefined y la función también
   var x = 10;
   console.log(x); //10
   console.log(a); //8
@@ -22,7 +22,7 @@ var c = function(a, b, c) {
     var x = 5;
   }
   f(a,b,c);
-  console.log(b); // SEGUN YO ES 10 (NO ENTIENDO PQ NO PESCA LA LINEA 21) PERO ES 9
+  console.log(b); // SEGUN YO ES 10 (NO ENTIENDO PQ NO PESCA LA LINEA 21) PERO ES 9 EXPLICACION: en este caso la funcion f si tenemos un valor para b, por ende NO vamos a modificar el valor de b del contexto de la funcion c, es decir está fuera de su scope
 }
 c(8,9,10);
 console.log(b); //10
@@ -40,7 +40,7 @@ baz = 2;
 
 ```javascript
 var instructor = "Tony";
-if(true) {
+if(true) { //recordar que ni el if, for ni while NO se crean nuevos contextos de ejecución!!!
     var instructor = "Franco";
 }
 console.log(instructor); //"Franco"
@@ -55,7 +55,7 @@ console.log(instructor); //"Tony"
       console.log(instructor); //Franco
    }
 })();
-console.log(instructor); //"Tony"
+console.log(instructor); //"Tony" //OJO en este caso dentro de la funcion se crea un nuevo ambiente de ejecucion, por eso no pusa sobre la variable instructor, tambien tener en cuenta de que si no poníamos var instructur dentro de la función, ahí si arrojaría Franco
 ```
 
 ```javascript
@@ -63,7 +63,7 @@ var instructor = "Tony";
 let pm = "Franco";
 if (true) {
     var instructor = "The Flash";
-    let pm = "Reverse Flash"; //el let no sale de su "scope"
+    let pm = "Reverse Flash"; //el let no sale de su "scope", es decir la variable creada con let tiene alcance de llaves!!! es decir let pm= Reverse Flash solamente dentro de ese if!
     console.log(instructor); //The Flash
     console.log(pm); //Reverse Flash
 }
@@ -115,15 +115,17 @@ test();
 ```
 
 Y el de este código? :
-////Este no lo ENTENDI!
+
 ```javascript
 var snack = 'Meow Mix';
 
 function getFood(food) {
     if (food) {
         var snack = 'Friskies';
+        //console.log(snack)
         return snack;
     }
+    //console.log(snack) //undefined esto se debe a que en el creation phase sí declaramos una var snack, y aunque no hayamos entrado al if, igual reservo espacio en memoria, de manera que quedaría en undefined si es que no entramos al if
     return snack;
 }
 
@@ -147,7 +149,7 @@ var obj = {
    }
 };
 
-console.log(obj.prop.getFullname());
+console.log(obj.prop.getFullname()); //Aurelio De Rosa   Esto se debe a que ese this hace referencia al objeto desde donde lo estamos llamando!
 
 var test = obj.prop.getFullname;
 
