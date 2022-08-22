@@ -1,0 +1,124 @@
+// function countdown(n) {
+//     //imprimir la cuenta regresiva de n a 0
+
+//     for (let i=n; i>=0;i--) {
+//         console.log(i);
+//     }
+// }
+// countdown(10);
+
+//DE manera recursiva esto se podría escribir como:
+
+// function countdown(count) {
+//     if (count<=0) {
+//         console.log(count)
+//         return count
+//     } else {
+//         console.log(count);
+//         return countdown (count-1);
+//     }
+// }
+
+// countdown(2)
+
+//Otro ejemplo con factorial
+
+//Sabemos que:
+//5!=5*4!
+//4!=4*3!
+//3!=3*2!
+//....
+//0!=1
+
+//Lo que hace la función parte preguntando por el factorial del numero de abajo (el cual aun no conoce), luego ese le pide el factorial al numero de abajo y asi sucesivamente hasta llegar al factorial conocido o CASO BASE que SI es conocido! entonces una vez que llega al caso conocido empieza a resolver el factorial de arriba, y con ese resultado puede resolver un caso mas arriba y asi sucesivamente hasta resolver el caso del factorial que se pide entonces:ES FUNDAMENTAL CONTAR CON UN CASO BASE QUE RESULVA!
+// function factorial (numero) { //
+//     if (numero===1 || numero===0) {
+//         return (1);   
+//     } else if (numero<0) {
+//         return "NO EXISTE FACTORIAL PARA NEGATIVOS";
+//     }
+//     else {
+//         return (numero * factorial(numero-1));
+//     }
+// }
+
+// console.log(factorial())
+//####################################################
+//####################################################
+//####################################################
+
+//Estructuras de datos
+
+// Un Set es una colección de elementos sin un orden en particular en donde cada elemento puede aparecer una sola vez. O sea, que es parecido a un arreglo, pero con la condición que cada elemento sea único. En javascript los sets ya están implementados, y los podemos encontrar en la clase Set, acá esta la documentación. Veamos un ejemplo:
+
+
+
+var arreglo = [1,2,3,4,4,5,5,1,2]
+var set1    = new Set(arreglo)
+console.log(arreglo)   // [ 1, 2, 3, 4, 4, 5, 5, 1, 2 ]
+console.log(set1)      // Set { 1, 2, 3, 4, 5 }
+
+
+//STACK (PILAS)
+
+// Esta estructura de datos es básicamente una pila de cosas. Vieron cuando tienen que lavar los platos: primero van poniendo un plato arriba del otro (armando la pila), después empiezan a sacar desde arriba para ir limpiando. Bueno, si se fijan bien el primer plato que ponen en la pila es el último que va a ser lavado, o bien, el último que entra es el primero que va a salir. Esto se conoce como una estructura tipo LIFO: Last in, first out.
+
+var stack = [];
+stack.push(1);       // la pila es [1]
+stack.push(10);      // la pila es ahora [1, 10]
+var i = stack.pop(); // la pila [1]
+console.log(i);      // muestra 10
+
+//creamos una clase
+//partimos por la funcion constructora
+
+function Stack() {
+    this.arr=[];
+}
+//Queremos agregar estos métodos a la clase:
+//add
+//remove
+//size
+
+
+Stack.prototype.add=function(elemento) {
+    this.arr.push(elemento);
+}
+Stack.prototype.remove=function() {
+    this.arr.pop();
+}
+Stack.prototype.size= function () {
+    console.log (this.arr.length)
+    return this.arr.length
+}
+
+
+const miStack= new Stack()
+
+console.log(miStack)
+miStack.add(10);
+console.log(miStack)
+miStack.add(15);
+console.log(miStack)
+miStack.add(20);
+console.log(miStack)
+miStack.remove();
+console.log(miStack)
+console.log(miStack.size())
+
+//pero vemos que:
+
+miStack.push()
+miStack.unshift() //no son funciones definidas dentro de la clase miStack
+
+
+
+
+//COLAS (Queue)
+// Una cola, es una estructura en la cual el primer elemento que entra es el primer elemento que sale (como cuando hacemos una cola en el Banco :smile:). Esto es lo opuesto al comportamiento de una Pila, y se conoce como estructura tipo FIFO: First in, First out. La cola tiene dos métodos tambien: enqueue() y dequeue(), que sirven para encolar y 'desencolar' elementos. Esta estructura la vamos a usar mucho para representar problemas de la vida real. Por ejemplo, si tuviera que hacer una app que desvie llamados de clientes a operadores, podríamos hacer una cola, donde vamos metiendo los clientes que van llegando, y cuando algún operador esté libre, sacar un cliente de la cola y pasarlo.
+var queue = [];
+queue.push(1);         // la cola es [1]
+queue.push(2);         // la cola es [1, 2]
+var i = queue.shift(); // la cola es [2]
+console.log(i);        // muestra 1
+
