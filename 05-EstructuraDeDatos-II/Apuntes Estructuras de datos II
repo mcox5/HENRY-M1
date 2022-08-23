@@ -1,0 +1,77 @@
+//Lecture 22 de Agosto
+
+//Listas Enlazadas:
+
+// const nodo= {
+//     value:5,
+//     next: nodo2
+// };
+
+// const nodo2= {
+//     value :10,
+//     next: nodo3
+// };
+
+// const nodo3 = {
+//     value : 7,
+//     next: null
+// };
+
+//si llego a perder la referencia del primer nodo, se pierde toda la lista!
+
+function LinkedList() {
+    //tiene 2 propiedades
+    this.head = null; //cuando no hay ni primer nodo ni segundo ni nada
+    this.size=0; //es el tamaño de la lista, esta lista se va a armando a medida que se conecte con un nodo y ese nodo con otro y asi sucesivamente
+}
+
+function Node(valor) { //RECORDAR que un constructor de una clase las nombramos con MAYUSCULA por convención!
+    //tambien tiene dos propiedades:
+    this.data=valor //le vamos a pasar por parámetro al constructor un valor
+    this.next=null //cuando el nodo se crea le vamos a pasar una referencia null
+}
+
+LinkedList.prototype.add= function (value) {
+    const newNode=new Node (value)
+};
+//PRIMER PASO: crea un nodo
+LinkedList.prototype.add= function (value) {
+    const newNode = new Node (value);
+    let current = this.head//es la que me va a decir en donde estoy parado, en el primer momento current es null, entonces la primera pregunta para saber si tengo que insertar en el head es si current es null
+    if (!current) { //me pregunto si no tengo nada en current
+        this.head=newNode
+        this.size++
+        return newNode;
+    }
+    //ahora vemos la parte en qué hacemos si la lista ya tiene un head
+    
+    //mientras tenga a donde moverme me muevo
+    while (current.next) { //cuando el current.next es igual a null,entonces llega al final, el cual es un falso esto sigunifica que llegamos al final de la lista entonces llegó el momento de insertar el nodo nuevo
+        current=current.next
+    }
+    current.next=newNode
+    this.size++
+    
+   
+};
+
+const miLista= new LinkedList();
+// miLista.add(10)
+// miLista.add(15)
+// miLista.add(7)
+// miLista.add(100)
+
+console.log(miLista);
+
+
+//TABLAS HASH (HASH TABLES)
+//ACCEDER A LA POSICION DE UN ARRAY ES MAS RAPIDO QUE ACCEDER A LA PROPIEDAD DE UN OBJETO
+
+//para esto el par clave valor de un objeto va a pasar por una función "hash", la cual toma la palabra o clave y la transforma en un indice, es decir nos retornaría una posicion en el array, y luego en esa posición del array va a almacenar el valor de la propiedad
+
+console.log("Jorge");
+const nombre ="Jorge"
+for (const letter of nombre) {
+    console.log(letter);
+    console.log((letter.charCodeAt())); //a la suma de esotos le sacamos el modulo dividido por la cantidad de buckets 503%35 (el enunciado pide 35 posiciones)
+}

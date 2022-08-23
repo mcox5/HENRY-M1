@@ -66,9 +66,9 @@ Queue.prototype.size = function () {
   return this.arr.length;
 };
 const miQueue= new Queue
-console.log(miQueue.size())
-console.log(miQueue.enqueue())
-console.log(miQueue.dequeue())
+// console.log(miQueue.size())
+// console.log(miQueue.enqueue())
+// console.log(miQueue.dequeue())
 
 
 

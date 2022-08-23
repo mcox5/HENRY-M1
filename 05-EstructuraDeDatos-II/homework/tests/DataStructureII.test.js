@@ -6,7 +6,7 @@ const {
   HashTable
 } = require('../homework');
 
-describe('Una linked list', function() {
+describe('Una linked list', function() { //aca empieza a correr los test
   var linkedList;
 
   beforeEach(function() {
@@ -14,7 +14,7 @@ describe('Una linked list', function() {
   });
 
   it('tiene metodos `add`, `remove`, y `search`', function() {
-    expect(typeof linkedList.add).toBe('function');
+    expect(typeof linkedList.add).toBe('function'); //espera que el tipo de LinkedList el metodo retorne una funcion
     expect(typeof linkedList.remove).toBe('function');
     expect(typeof linkedList.search).toBe('function');
   });
