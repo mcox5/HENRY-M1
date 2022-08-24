@@ -1,0 +1,13 @@
+// Arboles Binarios: Estos se asemejan en estructura a las listas enlazadas vistas antes
+//ahora el nodo base o "root" apuntará a dos nodos ("left" y "right"), en vez de un "next" que teníamos antes. Luego cada nodo puede ser nodo padre al igual como su antecesor, con dos hijos (left o right) puede tener solo un hijo o bien puede no tener nada
+// Estos arboles van a tener niveles
+//Los nodos que tienen las mismas propiedades, pertenecen a la misma clase, podemos dividir un arbol en sub-arboles
+//cada nodo del arbol es un arbol
+//en un arbol los nodos van a compartir mismas propiedades y metodos
+
+//el arbol binario de busqueda, a medida que los valores se insertan en el arbol, sigue cierta regla que ordena los valores, en el caso de ejemplo, se preguntan si el valor del nodo a insertar es mayor o menor que el nodo padre, si es menor, insertarlo a la izquierda y si es mayor insertarlo a la derecha
+
+//Recorridos:
+
+//Existen muchas formas de por recorrer un arbol
+
