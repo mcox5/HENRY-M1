@@ -16,7 +16,23 @@ const {
 
 var countArray = function(array) {
     // Tu código aca:
-    
+    //cuando recorremos los array, nos podemos topar con dos cosas, un numero o un array (debemos utilizar una recursion CONFIAR EN NUESTRA FUNCION)
+    //voy a necesitar un acumulador (let count)
+    //voy a recorrer el array (esto es un for)
+    //a medida que voy recorriendo debo preguntar si es un numero o un array, si es numero lo agregamos al contador, si es array invocamos la funcion countArray
+    //cuando todo esto termine voy a terminar retornando count
+
+    let count = 0;
+    for (let i=0 ; i<array.length; i++) { //el caso de cierre en este caso es el termine de recorrer
+        if (Array.isArray(array[i])) {
+            //es un array
+            count+=countArray(array[i]); //aca es donde llamamos a la funcion
+        } else {
+            //es un numero
+            count += array[i];
+        }
+    }
+    return count;
 }
 
 
@@ -37,10 +53,24 @@ var countArray = function(array) {
 // dentro de a tenemos 3 propiedades mas, luego a3 tiene otras 3 y por ultimo c tiene una extra.
 // Propiedades: a, a1, a2, a3, f, a, c, o, b, c --> 10 en total
 
+
+//ver solucion de este  nuevamente
 var countProps = function(obj) {
     // Tu código aca:
-
-}
+    //sabemos que voy a necesitar un count que parte en cero
+    //recorremos con un for in
+    //al recorrer le pregunte si es un objeto, si es un objeto le pregunto cuantas propiedadades tiene ese objeto pasandole countProps pasandole ese objeto
+    //si no es un objeto el count no hace nada y sigo recorriendo
+    
+    let count=0;
+    for (const prop in obj) { //aca estoy recorriendo las propiedades de un objeto
+        count++; 
+        if (typeof prop ==="object" && !Array.isArray(obj[prop])) {
+            count += countProps(obj[prop])
+        }
+    }
+    return count;
+};
 
 
 // Implementar el método changeNotNumbers dentro del prototype de LinkedList que deberá cambiar
@@ -51,14 +81,30 @@ var countProps = function(obj) {
 //    lista.changeNotNumbers();
 //    Ahora la lista quedaría: Head --> [1] --> ['2'] --> [false] --> ['Kirikocho] y la función debería haber devuelto el valor 1
 
-LinkedList.prototype.changeNotNumbers = function(){
-    // Tu código aca:
+//castear es convertir los datos!
 
+//a medida que voy recorriendo los datos preguntemso si se puede castear a numero (true, "3", 3 sí se pueden castear, "hola" no puede!)
+// Utilizamos metodo Number para castear
+//hay un método que se llama isNan que nos dice si algo es numero o no
+//ver solucion denuevo
+LinkedList.prototype.changeNotNumbers = function(){
+
+    // Tu código aca:
+let count = 0;
+let current=this.head;
+while (current) {
+    if (isNan(Number(current.value))) {
+        current.value = "kiricocho";
+        count ++;
+    }
+    current = current.next;
+}
+return count;
 }
 
 
 // Implementar la función mergeQueues que a partir de dos queues recibidas por parametro
-// debe devolver una nueva Queue que vaya mergeando los nodos de las anteriores.
+// debe devolver una nueva Queue que vaya mergeando (uniendo/mezclando) los nodos de las anteriores.
 // Ejemplo:
 // - queueOne: [7,3,5]
 // - queueTwo: [2,4,6]
@@ -67,7 +113,15 @@ LinkedList.prototype.changeNotNumbers = function(){
 
 var mergeQueues = function(queueOne, queueTwo) {
     // Tu código aca:
-
+//RECORDAR que la queue siempre saca de alprincipio y agrega al final!
+const newQueue = new Queue;
+while (queueOne.size() || queueTwo.size()) { 
+    //sacar de la fila 1 y guardar en la nueva fila
+    if (queueOne.size()) newQueue.enqueue(queueOne.dequeue()) // a la nueva lista le agrego lo que saco de la queueOne
+    //sacar de la fila 2 y guardar en la nueva fila
+    if (queueTwo.size()) newQueue.enqueue(queueTwo.dequeue()) // a la nueva lista le agrego lo que saco de la queueTwo
+}
+return newQueue;
 }
 
 
@@ -80,8 +134,13 @@ var mergeQueues = function(queueOne, queueTwo) {
 // - var multBySix = closureMult(6);
 // - multBySix(4) --> 24
 
+
+//atacar este problema que debiera ser muy facil!
 var closureMult = function(multiplier) {
     // Tu código aca:
+    return function (num) {
+        return multiplier * num;
+    }
 
 }
 
@@ -89,7 +148,11 @@ var closureMult = function(multiplier) {
 // que debe retornar la suma total de los valores dentro de cada nodo del arbol
 BinarySearchTree.prototype.sum = function() {
     // Tu código aca:
-
+    let count = 0;
+    count += this.value;
+    if (this.left) count +=this.left.sum();
+    if (this.right) count += this.right.sum();
+    return count
 }
 
 module.exports = {

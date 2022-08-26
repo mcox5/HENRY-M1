@@ -79,6 +79,7 @@ LinkedList.prototype.search = function (input) {
   //si es un string chequeamos que el valor del nodo sea igual al del string y retornamos el value
   //si no es un string, es una funcion, entonces si a esa funcion le entregamos un value, que retorne true, y vemos que value hace q cumpla esa condicion
   let current=this.head;
+  
   while (current) { //este while se corta cuando current toma el valor de null
     if (typeof input==="function") {
       //input es funcion
@@ -106,6 +107,7 @@ let nueva_lista=new LinkedList();
 nueva_lista.add(4)
 nueva_lista.add(3)
 nueva_lista.add("hola")
+console.log(nueva_lista);
 // console.log(nueva_lista);
 // console.log(nueva_lista.remove())
 //console.log(nueva_lista)
